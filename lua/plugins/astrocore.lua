@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -44,14 +42,15 @@ return {
     mappings = {
       -- first key is the mode
       n = {
+        ["d"] = { '"_d' },
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs
-        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
+        ["H"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["L"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        --
         -- mappings seen under group name "Buffer"
-        ["<Leader>bd"] = {
+        ["<C-w>"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
               function(bufnr) require("astrocore.buffer").close(bufnr) end
@@ -60,12 +59,23 @@ return {
           desc = "Close buffer from tabline",
         },
 
+        ["<A-n>"] = { ":vertical resize +2<CR>" },
+        ["<A-m>"] = { ":vertical resize -2<CR>" },
+        ["<A-,>"] = { ":resize -2<CR>" },
+        ["<A-.>"] = { ":resize +2<CR>" },
+        ["<A-=>"] = { "<C-w>=", desc = "Resize equal" },
+        -- split
+        ["<A-v>"] = { "<C-w>v", desc = "Split window vertically" },
+        ["<A-s>"] = { "<C-w>s", desc = "Split window horizontally" },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+      },
+      v = {
+        ["d"] = { '"_d' },
       },
     },
   },
