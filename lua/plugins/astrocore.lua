@@ -46,8 +46,8 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs
-        ["H"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["L"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["H"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Next buffer" },
+        ["L"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Previous buffer" },
         --
         -- mappings seen under group name "Buffer"
         ["<C-w>"] = {
@@ -67,6 +67,8 @@ return {
         -- split
         ["<A-v>"] = { "<C-w>v", desc = "Split window vertically" },
         ["<A-s>"] = { "<C-w>s", desc = "Split window horizontally" },
+        -- Copilot
+        ["<C-[>"] = { ":Copilot suggestion<CR>", desc = "Copilot suggestion" },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
@@ -77,6 +79,7 @@ return {
       v = {
         ["d"] = { '"_d' },
       },
+      i = {},
     },
   },
 }

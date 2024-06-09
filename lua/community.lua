@@ -20,7 +20,7 @@ return {
   -- Editing
   { import = "astrocommunity.editing-support.suda-vim" },
   -- Completion
-  -- { import  = "astrocommunity.completion.copilot-lua" },
+  { import = "astrocommunity.completion.copilot-lua" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   -- Syntax
   { import = "astrocommunity.syntax.vim-easy-align" },
